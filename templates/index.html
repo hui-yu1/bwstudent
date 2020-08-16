@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<h1 align="center" style="position: relative;top:50px;"><a href="{{ url_for('index') }}" style="color: black;text-decoration: none">学生信息管理系统</a></h1>
+
+<form  style="width: 50%; position: relative;top: 138px;left: 30%;" action="{{ url_for('find') }}" method="post">
+    <input type="text" name="info" placeholder="请输入学生ID或姓名" style="width: 70%; height: 40px; border-radius: 5px;border-width: 1px">
+    <input type="submit" value="搜索" style="width: 10%; height: 40px; border-radius: 5px; border-color: darkgray; border-width: 1px; background-color: white">
+    <br>{{ alter }}
+</form>
+
+<a href="{{ url_for('adds') }}" style="color: darkgray;position: relative;top: 195px;left: 190px;">添加学生信息</a>
+<span style="position: relative;top:193px;left:506px">排序： <a href="{{ url_for('sortord', sort_id='age') }}">年龄</a> | <a href="{{ url_for('sortord', sort_id='english') }}">英语</a> | <a href="{{ url_for('sortord', sort_id='language') }}">语文</a>
+    | <a href="{{ url_for('sortord', sort_id='math') }}">数学</a> | <a href="{{ url_for('sortord', sort_id='total') }}">总成绩</a> </span>
+<table class="table" align="center" style="width: 70%;position: relative;top:200px">
+  <thead class="thead-light">
+    <tr align="center">
+      <th scope="col">ID</th>
+      <th scope="col">姓名</th>
+      <th scope="col">性别</th>
+      <th scope="col">年龄</th>
+      <th scope="col">英语成绩</th>
+      <th scope="col">语文成绩</th>
+      <th scope="col">数学成绩</th>
+      <th scope="col">总成绩</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if data %}
+
+        {% for d in data %}
+        <tr align="center">
+          <th scope="row">{{ d.id }}</th>
+          <td>{{ d.name }}</td>
+          <td>{{ d.gender }}</td>
+          <td>{{ d.age }}</td>
+          <td>{{ d.english }}</td>
+          <td>{{ d.language }}</td>
+          <td>{{ d.math }}</td>
+          <td>{{ d.total }}</td>
+          <td><a href="{{ url_for('alter',alter_id=d.id) }}">修改</a></td>
+          <td><a href="{{ url_for('dels',dels_id=d.id) }}">删除</a></td>
+        </tr>
+        {% endfor %}
+    {% elif data1 %}
+
+        {% for d1 in data1 %}
+        <tr align="center">
+          <th scope="row">{{ d1.id }}</th>
+          <td>{{ d1.name }}</td>
+          <td>{{ d1.gender }}</td>
+          <td>{{ d1.age }}</td>
+          <td>{{ d1.english }}</td>
+          <td>{{ d1.language }}</td>
+          <td>{{ d1.math }}</td>
+          <td>{{ d1.total }}</td>
+          <td><a href="{{ url_for('alter',alter_id=d1.id) }}">修改</a></td>
+          <td><a href="{{ url_for('dels',dels_id=d1.id) }}">删除</a></td>
+        </tr>
+        {% endfor %}
+
+    {% else %}
+
+        {% for u in user_info %}
+        <tr align="center">
+          <th scope="row">{{ u.id }}</th>
+          <td>{{ u.name }}</td>
+          <td>{{ u.gender }}</td>
+          <td>{{ u.age }}</td>
+          <td>{{ u.english }}</td>
+          <td>{{ u.language }}</td>
+          <td>{{ u.math }}</td>
+          <td>{{ u.total }}</td>
+          <td><a href="{{ url_for('alter',alter_id=u.id) }}">修改</a></td>
+          <td><a href="{{ url_for('dels',dels_id=u.id) }}">删除</a></td>
+        </tr>
+        {% endfor %}
+
+    {% endif %}
+
+  </tbody>
+</table>
+
+</body>
+</html>

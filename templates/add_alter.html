@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<a href="{{ url_for('index') }}" style="color: black;position: relative;top: 15px;left: 15px;text-decoration: none">返回首页</a>
+
+<form style="width: 30%;position:relative;top:50px;left:7%;" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">姓名</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+    <br>
+  <div class="form-group">
+    <label for="exampleInputEmail1">性别</label>
+    <input type="text" name="gander" class="form-control">
+  </div>
+    <br>
+  <div class="form-group">
+    <label for="exampleInputEmail1">年龄</label>
+    <input type="text" name="age" class="form-control">
+  </div>
+    <br>
+  <div class="form-group">
+    <label for="exampleInputEmail1">英语成绩</label>
+    <input type="text" name="english" class="form-control">
+  </div>
+    <br>
+  <div class="form-group">
+    <label for="exampleInputEmail1">语文成绩</label>
+    <input type="text" name="language" class="form-control">
+  </div>
+    <br>
+  <div class="form-group">
+    <label for="exampleInputEmail1">数学成绩</label>
+    <input type="text" name="math" class="form-control">
+  </div>
+    <br>
+  <button type="submit" class="btn btn-primary">确认</button>
+    {{ alter }}
+</form>
+
+</body>
+</html>
